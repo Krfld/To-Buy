@@ -1,9 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart' show Timestamp;
-
-// Map user = {
-//   'name': String, //?
-// };
-
 Map group = {
   'name': String,
   'users': List<String>,
@@ -20,7 +14,7 @@ Map product = {
   'store': String, //?
   'description': String, //?
   'quantity': double, //?
-  'units': String, //?
+  'unit': String, //?
   'flag': int, // 0 - Discount | >0 - Important //?
   'added': signature,
   'bought': signature, //?
@@ -29,5 +23,5 @@ Map product = {
 
 Map signature = {
   'user': String,
-  'timestamp': Timestamp,
+  'timestamp': int,
 };
