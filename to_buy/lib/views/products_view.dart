@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
 
 class ProductsView extends StatelessWidget {
-  final String currentGroupId;
-  final String currentListId;
+  // final String currentGroupId;
+  // final String currentListId;
 
-  const ProductsView(this.currentGroupId, this.currentListId, {Key? key}) : super(key: key);
+  const ProductsView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text('data'),
+            Text('data'),
+          ],
+        ),
+      ),
+    );
   }
 }

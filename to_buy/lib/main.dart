@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:to_buy/views/products_view.dart';
 
 // import './views/groups_view.dart';
 // import './views/check_lists_view.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'To Buy',
       theme: ThemeData(
         primarySwatch: Colors.teal,
         brightness: Brightness.dark,
@@ -27,11 +28,7 @@ class MyApp extends StatelessWidget {
       //   'CheckListsView': (context) => CheckListsView(),
       //   'ProductsView': (context) => ProductsView(),
       // },
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World'),
-        ),
-      ),
+      home: ProductsView(),
     );
   }
 }

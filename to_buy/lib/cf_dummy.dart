@@ -13,8 +13,8 @@ Map product = {
   'brand': String, //?
   'store': String, //?
   'description': String, //?
-  'quantity': double, //?
-  'unit': String, //?
+  'quantity': String, //?
+  'amount': String, //?
   'flag': int, // 0 - Discount | >0 - Important //?
   'added': signature,
   'bought': signature, //?
