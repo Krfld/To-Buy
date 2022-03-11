@@ -11,6 +11,12 @@ class ProductsView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Products'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () => null,
+          ),
+        ],
       ),
       body: Center(
         child: Column(
