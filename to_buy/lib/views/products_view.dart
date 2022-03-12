@@ -31,11 +31,22 @@ class ProductsView extends StatelessWidget {
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
               title: Text('Title $index'),
               subtitle: Text('Subtitle'),
-              onTap: () => null,
+              onTap: () => showDialog(context: context, builder: (context) => ProductPopup()),
             ),
           );
         },
       ),
     );
+  }
+}
+
+class ProductPopup extends StatelessWidget {
+  const ProductPopup({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final GlobalKey<FormState> form = GlobalKey<FormState>();
+
+    return AlertDialog();
   }
 }
