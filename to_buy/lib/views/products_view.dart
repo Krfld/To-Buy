@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../services/products_service.dart';
+import '../classes/product.dart';
+
 class ProductsView extends StatelessWidget {
   // final String currentGroupId;
   // final String currentListId;
@@ -29,9 +32,13 @@ class ProductsView extends StatelessWidget {
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             child: ListTile(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-              title: Text('Title $index'),
-              subtitle: Text('Subtitle'),
-              onTap: () => showDialog(context: context, builder: (context) => ProductPopup()),
+              title: Text('Product $index'),
+              subtitle: Text('Details'),
+              onTap: () => showDialog(
+                context: context,
+                barrierDismissible: true,
+                builder: (context) => ProductPopup(index.toString()),
+              ),
             ),
           );
         },
@@ -41,12 +48,16 @@ class ProductsView extends StatelessWidget {
 }
 
 class ProductPopup extends StatelessWidget {
-  const ProductPopup({Key? key}) : super(key: key);
+  final Token token;
+
+  const ProductPopup(this.token, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final GlobalKey<FormState> form = GlobalKey<FormState>();
 
-    return AlertDialog();
+    return AlertDialog(
+      title: Text('Product $token'),
+    );
   }
 }

@@ -1,6 +1,7 @@
 import './signature.dart';
 
-typedef Products = Map<String, Product>;
+typedef Token = String;
+typedef Products = Map<Token, Product>;
 
 class Product implements Comparable<Product> {
   String name;
