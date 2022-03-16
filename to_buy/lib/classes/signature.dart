@@ -1,5 +1,7 @@
+typedef ID = String;
+
 class Signature implements Comparable<Signature> {
-  String user;
+  ID user;
   int timestamp;
 
   Signature({

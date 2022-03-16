@@ -42,15 +42,16 @@ class ProductsView extends StatelessWidget {
         padding: EdgeInsets.all(16),
         physics: BouncingScrollPhysics(),
         separatorBuilder: (context, index) => SizedBox(height: 8), // Divider
-        itemCount: 10,
+        itemCount: ProductsService.productsToBuy().length,
         itemBuilder: (context, index) {
+          Product product = ProductsService.productsToBuy().entries.elementAt(index).value;
           return Card(
             elevation: elevation,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             child: ListTile(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-              title: Text('Product $index'),
-              subtitle: Text('Details'),
+              title: Text(product.name),
+              subtitle: product.description != null ? Text(product.description ?? '') : null,
               onTap: () => showDialog(
                 context: context,
                 barrierDismissible: true,
@@ -75,7 +76,6 @@ class AddProduct extends StatelessWidget {
       title: Text('Add Product'),
       content: Form(
         key: form,
-        // onWillPop: () => Log.print('onWillPop'),
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Column(
@@ -125,7 +125,7 @@ class AddProduct extends StatelessWidget {
 }
 
 class ProductPopup extends StatelessWidget {
-  final Token token;
+  final ProductToken token;
 
   const ProductPopup(this.token, {Key? key}) : super(key: key);
 
