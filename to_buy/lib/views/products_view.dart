@@ -11,14 +11,14 @@ class ProductsView extends StatelessWidget {
 
   const ProductsView({Key? key}) : super(key: key);
 
-  final double elevation = 8;
+  final double elevation = 4;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton(
-        elevation: elevation,
+        // elevation: elevation,
         child: Icon(Icons.add),
         // icon: Icon(Icons.add),
         // label: Text('Add'),

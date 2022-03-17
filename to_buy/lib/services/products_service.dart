@@ -16,6 +16,34 @@ class ProductsService {
       name: 'Product 2',
       added: Signature(user: 'User 2', timestamp: DateTime.now().millisecondsSinceEpoch),
     ),
+    '3': Product(
+      name: 'Product 3',
+      description: 'Description 3',
+      added: Signature(user: 'User 3', timestamp: DateTime.now().millisecondsSinceEpoch),
+    ),
+    '4': Product(
+      name: 'Product 4',
+      description: 'Description 4',
+      added: Signature(user: 'User 4', timestamp: DateTime.now().millisecondsSinceEpoch),
+    ),
+    '5': Product(
+      name: 'Product 5',
+      description: 'Description 5',
+      added: Signature(user: 'User 5', timestamp: DateTime.now().millisecondsSinceEpoch),
+    ),
+    '6': Product(
+      name: 'Product 6',
+      added: Signature(user: 'User 6', timestamp: DateTime.now().millisecondsSinceEpoch),
+    ),
+    '7': Product(
+      name: 'Product 7',
+      added: Signature(user: 'User 7', timestamp: DateTime.now().millisecondsSinceEpoch),
+    ),
+    '8': Product(
+      name: 'Product 8',
+      description: 'Description 8',
+      added: Signature(user: 'User 8', timestamp: DateTime.now().millisecondsSinceEpoch),
+    ),
   };
 
   static final Products _products = testProducts; // Order by added date & split by bought
