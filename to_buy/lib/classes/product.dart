@@ -1,9 +1,23 @@
+import '../utils/logger.dart';
 import './signature.dart';
 
 typedef ProductToken = String;
-typedef Products = Map<ProductToken, Product>;
+typedef Products = List<Product>;
 
 class Product implements Comparable<Product> {
+  final ProductToken token;
+  final ProductContent content;
+
+  Product({
+    required this.token,
+    required this.content,
+  });
+
+  @override
+  int compareTo(Product other) => content.compareTo(other.content);
+}
+
+class ProductContent implements Comparable<ProductContent> {
   String name;
   // String? brand;
   // String? store;
@@ -13,9 +27,9 @@ class Product implements Comparable<Product> {
   int? flag;
   Signature added;
   Signature? bought;
-  Signature? removed;
+  // Signature? removed;
 
-  Product({
+  ProductContent({
     required this.name,
     // this.brand,
     // this.store,
@@ -25,14 +39,14 @@ class Product implements Comparable<Product> {
     this.flag,
     required this.added,
     this.bought,
-    this.removed,
+    // this.removed,
   });
 
-  factory Product.fromMap(Map product) {
+  factory ProductContent.fromMap(Map product) {
     Map? bought = product['bought'];
-    Map? removed = product['removed'];
+    // Map? removed = product['removed'];
 
-    return Product(
+    return ProductContent(
       name: product['name'],
       // brand: product['brand'],
       // store: product['store'],
@@ -42,7 +56,7 @@ class Product implements Comparable<Product> {
       flag: product['flag'],
       added: Signature.fromMap(product['added']),
       bought: bought != null ? Signature.fromMap(bought) : null,
-      removed: removed != null ? Signature.fromMap(removed) : null,
+      // removed: removed != null ? Signature.fromMap(removed) : null,
     );
   }
 

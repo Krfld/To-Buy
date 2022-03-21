@@ -1,3 +1,4 @@
+import '../utils/logger.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../classes/product.dart';
 
@@ -11,12 +12,9 @@ class ProductsRepositoryCloudFirestore implements ProductsRepository {
   final FirebaseFirestore _instance = FirebaseFirestore.instance;
 
   @override
-  Stream<Products> productsStream(String currentListId) => _instance
-      .collection('lists')
-      .doc(currentListId)
-      .collection('products')
-      .snapshots()
-      .map((snapshot) => {for (var doc in snapshot.docs) doc.id: Product.fromMap(doc.data())});
+  Stream<Products> productsStream(String currentListId) =>
+      _instance.collection('lists').doc(currentListId).collection('products').snapshots().map((snapshot) =>
+          snapshot.docs.map((e) => Product(token: e.id, content: ProductContent.fromMap(e.data()))).toList());
 
   @override
   Future<void> addProduct(String currentGroupId, String currentListId, Product product) {
