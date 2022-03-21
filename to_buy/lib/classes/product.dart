@@ -47,5 +47,8 @@ class Product implements Comparable<Product> {
   }
 
   @override
+  String toString() => 'Product($name, $description, ${added.timestamp}, ${bought?.timestamp})\n';
+
+  @override
   int compareTo(other) => added.compareTo(other.added);
 }

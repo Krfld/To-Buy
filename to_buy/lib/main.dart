@@ -20,8 +20,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'To Buy',
       theme: ThemeData(
+        visualDensity: VisualDensity.adaptivePlatformDensity,
         primarySwatch: Colors.teal,
-        brightness: Brightness.dark,
+        brightness: Brightness.light,
       ),
       // routes: {
       //   'GroupsView': (context) => GroupsView(),
