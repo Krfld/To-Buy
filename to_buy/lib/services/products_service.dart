@@ -53,19 +53,19 @@ class ProductsService {
   //   ),
   // }; //* Temp
 
-  static late Products products;
+  // static late Products products;
 
-  static Products productsToBuy() => products.where((product) => product.content.bought == null).toList()
-    ..sort((a, b) => a.content.added.compareTo(b.content.added));
+  // static Products productsToBuy() => products.where((product) => product.content.bought == null).toList()
+  //   ..sort((a, b) => a.content.added.compareTo(b.content.added));
 
-  static Products productsBought() => products.where((product) => product.content.bought != null).toList()
-    ..sort((a, b) => b.content.bought!.compareTo(a.content.bought!));
+  // static Products productsBought() => products.where((product) => product.content.bought != null).toList()
+  //   ..sort((a, b) => b.content.bought!.compareTo(a.content.bought!));
 
   // static Products productsRemoved() =>
   //     Map.fromEntries(_products.entries.where((element) => element.value.removed != null).toList()
   //       ..sort((a, b) => a.value.removed!.compareTo(b.value.removed!)));
 
-  static Product getProduct(ProductToken token) => products.singleWhere((product) => product.token == token);
+  // static Product getProduct(ProductToken token) => products.singleWhere((product) => product.token == token);
 
   static Stream<Products> productsStream() => _productsRepository.productsStream('test 1');
 }

@@ -41,9 +41,13 @@ class ProductsView extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) return Center(child: CircularProgressIndicator());
 
-          ProductsService.products = snapshot.data!;
+          Products products = snapshot.data!;
+          Products productsToBuy = products.where((product) => product.content.bought == null).toList()
+            ..sort((a, b) => a.content.added.compareTo(b.content.added));
+          Products productsBought = products.where((product) => product.content.bought != null).toList()
+            ..sort((a, b) => b.content.bought!.compareTo(a.content.bought!));
 
-          int totalProducts = ProductsService.productsToBuy().length + ProductsService.productsBought().length;
+          int totalProducts = productsToBuy.length + productsBought.length;
 
           if (totalProducts == 0) return Center(child: Text('No products'));
 
@@ -51,7 +55,7 @@ class ProductsView extends StatelessWidget {
             padding: EdgeInsets.all(16),
             physics: BouncingScrollPhysics(),
             itemCount: totalProducts,
-            separatorBuilder: (context, index) => index == ProductsService.productsToBuy().length - 1
+            separatorBuilder: (context, index) => index == productsToBuy.length - 1
                 ? Divider(
                     height: 32,
                     indent: 64,
@@ -61,10 +65,9 @@ class ProductsView extends StatelessWidget {
                   )
                 : SizedBox(height: 8),
             itemBuilder: (context, index) {
-              bool bought = index >= ProductsService.productsToBuy().length;
-              Product product = !bought
-                  ? ProductsService.productsToBuy().elementAt(index)
-                  : ProductsService.productsBought().elementAt(index - ProductsService.productsToBuy().length);
+              bool bought = index >= productsToBuy.length;
+              Product product =
+                  !bought ? productsToBuy.elementAt(index) : productsBought.elementAt(index - productsToBuy.length);
               return Card(
                 elevation: elevation,
                 margin: EdgeInsets.all(8),
@@ -129,13 +132,14 @@ class AddProduct extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               TextFormField(
+                textInputAction: TextInputAction.next,
                 // enabled: true, // readOnly: true,
                 textCapitalization: TextCapitalization.sentences,
                 decoration: InputDecoration(labelText: 'Name'),
                 validator: (value) => value?.isEmpty ?? true ? 'Name can\'t be empty' : null,
                 onSaved: (value) {
-                  // Update local name
-                  Log.print(value);
+                  //*Update local name
+                  Log.print(value!);
                 },
               ),
               TextFormField(
@@ -147,8 +151,8 @@ class AddProduct extends StatelessWidget {
                 decoration: InputDecoration(labelText: 'Details'),
                 // validator: (value) => value?.isEmpty ?? true ? 'Name can\'t be empty' : null,
                 onSaved: (value) {
-                  // Update local details
-                  Log.print(value);
+                  //* Update local description
+                  Log.print(value!.trim());
                 },
               ),
             ],

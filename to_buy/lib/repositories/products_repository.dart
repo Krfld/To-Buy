@@ -1,5 +1,6 @@
 import '../utils/logger.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../classes/product.dart';
 
 abstract class ProductsRepository {

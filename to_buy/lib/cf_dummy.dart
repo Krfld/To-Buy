@@ -18,7 +18,7 @@ Map product = {
   'flag': int, // 0 - Discount | >0 - Important //?
   'added': signature,
   'bought': signature, //?
-  'removed': signature, //?
+  // 'removed': signature, //?
 };
 
 Map signature = {
